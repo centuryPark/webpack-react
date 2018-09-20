@@ -5,9 +5,9 @@
   "private": true,
   "main": "build/webpack.config.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "export NODE_ENV=production&&webpack --config build/webpack.config.js",
-    "start": "export NODE_ENV=dev&&webpack-dev-server --open --config build/webpack.config.js"
+    "test": "export NODE_ENV=production&&echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config build/webpack.prod.js",
+    "start": "webpack-dev-server --open --config build/webpack.dev.js"
   },
   "keywords": [
     "webpack",
@@ -24,7 +24,8 @@
     "url-loader": "^1.1.1",
     "webpack": "^4.19.1",
     "webpack-cli": "^3.1.0",
-    "webpack-dev-server": "^3.1.8"
+    "webpack-dev-server": "^3.1.8",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "lodash": "^4.17.11"
