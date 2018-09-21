@@ -12,8 +12,10 @@ const common = {
     // print: './src/print.js'
   },
   output: {
-    // 多入口输出
-    filename: 'js/[name].bundle.js',
+    // 多入口输出，加hash，利用缓存，但是两次相同代码的build可能会产生不同的hash
+    // 因为 webpack 在入口 chunk 中，包含了某些样板(boilerplate)，特别是 runtime 和 manifest 导致hash改变。
+    // 输出可能会因当前的 webpack 版本而稍有差异。新版本不一定有和旧版本相同的 hash 问题，但我们需要提取模板，以防万一。
+    filename: 'js/[name].[chunkhash].js',
     path: DISTPATH, // Users/gongyuan/webpack/webpack-base/dist
   },
   module: {
@@ -47,12 +49,25 @@ const common = {
     // TODO 其他特别配置
     new HtmlWebpackPlugin({
       title: '生成html'
-    })
+    }),
+    // 这能把loadsh作为全局变量，使用时无需引入，$ jquery同理
+    /* new webpack.ProvidePlugin({
+      _: 'lodash',
+      join: ['lodash', 'join']提取loadsh的join,使用join时都是调用的_.join,这能很好的与 tree shaking 配合，将 lodash 库中的其他没用到的部分去除。
+    }) */
   ],
-  // 处理重复模块代码，CommonsChunkPlugin 已经从 webpack v4（代号 legato）中移除。
+  // 处理重复模块代码，提取到单独的chunk,CommonsChunkPlugin 已经从 webpack v4（代号 legato）中移除。
+  // 把库提取到vender中，使得浏览器能使用缓存
   optimization: {
+    runtimeChunk: 'single', // 提取模版，runtime到单独的chunk
     splitChunks: {
-      chunks: 'all'
+      cacheGroups: {
+        vendor: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all'
+        }
+      }
     }
   }
 }
