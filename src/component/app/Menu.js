@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
 
-class App extends Component {
+class Menu extends Component {
     constructor() {
         super();
     }
@@ -15,14 +15,20 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <h1>my react</h1>
+            <div className="page-menu">
+                <h1>菜单</h1>
                 <ul>
                     <li>
                         <Link to="/">home</Link>
                     </li>
                     <li>
-                        <Link to="/about">about</Link>
+                        <Link to="/about">关于</Link>
+                    </li>
+                    <li>
+                        <Link to="/colgate">colgate</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">登陆</Link>
                     </li>
                 </ul>
             </div>
@@ -30,4 +36,4 @@ class App extends Component {
     }
 }
 
-export default App;
+export default Menu;

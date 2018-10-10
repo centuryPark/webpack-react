@@ -3,11 +3,14 @@ import {
     BrowserRouter as Router,
     Route,
     Switch,
+    Redirect
 } from 'react-router-dom';
 import Loadable from "react-loadable";
-import App from './app/app';
+import Menu from './app/index';
 const Loading = () => "Loading...";
-const AboutComponent = Loadable({ loader: () => import("./about/About"), loading: Loading, delay: 150 });
+const AboutComponent = Loadable({ loader: () => import("./about/index"), loading: Loading, delay: 150 });
+const ColgateComponent = Loadable({ loader: () => import("./colgate/index"), loading: Loading, delay: 150 });
+const LoginComponent = Loadable({ loader: () => import("./login/index"), loading: Loading, delay: 150 });
 
 const NoMatch = ({location}) => (
     <div>
@@ -21,8 +24,14 @@ const BasicRouter = () => (
     <Router basename="/">
         <div className='router'>
             <Switch>
-                <Route exact path="/" component={App}/>
-                <Route exact path="/about" component={AboutComponent}/>
+                <Route exact path="/" render={()=>{
+                    document.title = '菜单选择';
+                    return <Menu />;
+                }}/>
+                <Redirect from="/menu" to="/" />
+                <Route path="/colgate" component={ColgateComponent}/>
+                <Route path="/login" component={LoginComponent}/>
+                <Route path="/about" component={AboutComponent}/>
                 <Route path="*" component={NoMatch}/>
             </Switch>
         </div>
