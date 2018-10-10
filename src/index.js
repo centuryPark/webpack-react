@@ -1,15 +1,12 @@
-import _ from 'lodash';
-//import print from './print.js';
-import './style/style.css';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import {BrowserRouter} from 'react-router-dom';
+import MyRouter from './component/router';
+import './style/style.scss';
 
-function component() {
-  var element = document.createElement('div');
-  element.innerHTML = `<div>${_.join(['Hello', 'webpack'], ' ')}</div>`;// 按需加载
-  element.onclick = e => import(/* webpackChunkName: "print" */ './print').then(module => {
-    var print = module.default;
-    print();
-  });
-  return element;
-}
-
-document.body.appendChild(component());
+ReactDOM.render(
+    <BrowserRouter>
+        <MyRouter />
+    </BrowserRouter>,
+    document.getElementById('root')
+);

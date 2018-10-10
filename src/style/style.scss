@@ -1,5 +1,11 @@
-div {
+.bg {
+  display: flex;
   background-color: red;
   background: url(../images/logo.jpg);
   background-size: contain;
+
+  span{
+    color: gold;
+    transform:rotate(7deg);
+  }
 }
