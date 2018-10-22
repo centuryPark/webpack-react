@@ -11,6 +11,7 @@ const Loading = () => "Loading...";
 const AboutComponent = Loadable({ loader: () => import("./about/index"), loading: Loading, delay: 150 });
 const ColgateComponent = Loadable({ loader: () => import("./colgate/index"), loading: Loading, delay: 150 });
 const LoginComponent = Loadable({ loader: () => import("./login/index"), loading: Loading, delay: 150 });
+const LiveListComponent = Loadable({ loader: () => import("./liveList/index"), loading: Loading, delay: 150 });
 
 const NoMatch = ({location}) => (
     <div>
@@ -32,6 +33,7 @@ const BasicRouter = () => (
                 <Route path="/colgate" component={ColgateComponent}/>
                 <Route path="/login" component={LoginComponent}/>
                 <Route path="/about" component={AboutComponent}/>
+                <Route path="/live" component={LiveListComponent}/>
                 <Route path="*" component={NoMatch}/>
             </Switch>
         </div>

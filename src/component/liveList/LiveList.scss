@@ -1,0 +1,38 @@
+.page-live-list {
+  font-size: 14px;
+
+  h3 {
+    padding: 0 20px;
+  }
+
+  .live-list {
+    padding: 20px 20px;
+  }
+
+  .live-item {
+    margin-top: 40px;
+
+    .banner {
+      img {
+        width: 100%;
+      }
+    }
+
+    .desc {
+      position: relative;
+      overflow: hidden;
+      height: 3em;
+
+      &::after {
+        content: "";
+        text-align: right;
+        position: absolute;
+        bottom: 0.4em;
+        right: 0;
+        width: 20%;
+        height: 1.2em;
+        background: linear-gradient(to right,rgba(255, 255, 255, 0),rgba(255, 255, 255, 1) 80%);
+      }
+    }
+  }
+}

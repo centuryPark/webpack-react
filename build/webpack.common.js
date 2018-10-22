@@ -17,7 +17,7 @@ const common = {
         pathinfo: true,
         filename: 'js/[name].[chunkhash].js',
         path: DISTPATH,
-        publicPath: "/"
+        publicPath: "/" // publicPath 总是以斜杠(/)开头和结尾。
     },
     module: {
         rules: [

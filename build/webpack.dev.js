@@ -18,6 +18,14 @@ module.exports = merge(common, {
         overlay: true,
         historyApiFallback: {
             disableDotRule: true,
-        }
+        },
+        proxy: [{
+          context: '/api',
+          target: 'https://io.zaojiu.com',  // 代理跨域目标接口
+          // pathRewrite: {'^/api' : ''}
+          changeOrigin: true,
+          secure: false,  // 当代理某些https服务报错时用
+          cookieDomainRewrite: 'http://0.0.0.0:8080'  // 可以为false，表示不修改
+        }],
     }
-})
+});
