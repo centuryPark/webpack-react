@@ -7,7 +7,9 @@ class LiveList extends Component {
   };
 
   componentDidMount() {
-    axios.get('api/live/now/streams?size=11&marker=').then((res) => {
+    axios.get('api/live/now/streams?size=11&marker=', {
+      withCredentials: true
+    }).then((res) => {
       this.setState({
         liveList: res.data.result
       })

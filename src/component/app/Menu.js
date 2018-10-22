@@ -30,6 +30,9 @@ class Menu extends Component {
                     <li>
                         <Link to="/login">登陆</Link>
                     </li>
+                    <li>
+                        <Link to="/live">live</Link>
+                    </li>
                 </ul>
             </div>
         )
