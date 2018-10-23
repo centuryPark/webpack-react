@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
+import axios from 'axios';
 
 class Menu extends Component {
     constructor() {
@@ -12,6 +13,18 @@ class Menu extends Component {
             print();
         });
     }; */
+
+  componentDidMount() {
+    axios.get('api/live/now/streams?size=11&marker=', {
+      withCredentials: true
+    }).then((res) => {
+      this.setState({
+        liveList: res.data.result
+      })
+    }).catch((err) => {
+      console.log(err);
+    });
+  }
 
     render() {
         return (

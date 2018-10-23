@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 
+const DEV_WEB_HOST = 'zaojiu.tv';
 
 module.exports = merge(common, {
   mode: 'development',
@@ -14,7 +15,7 @@ module.exports = merge(common, {
     contentBase: '../dist',
     compress: true, // 一切服务都启用gzip 压缩
     port: 8080,
-    host: '0.0.0.0',
+    host: '127.0.0.1',
     overlay: true,
     historyApiFallback: {
       disableDotRule: true,
@@ -25,7 +26,7 @@ module.exports = merge(common, {
       // pathRewrite: {'^/api' : ''}
       changeOrigin: true,
       secure: false,  // 当代理某些https服务报错时用
-      cookieDomainRewrite: 'http://0.0.0.0:8080',  // 可以为false，表示不修改
+      cookieDomainRewrite: DEV_WEB_HOST,  // 可以为false，表示不修改
       noInfo: true,
       onProxyRes: function (proxyRes, req, res) {
         let cookies = proxyRes.headers['set-cookie'];
@@ -40,7 +41,9 @@ module.exports = merge(common, {
           });
           //修改cookie path
           delete proxyRes.headers['set-cookie'];
-          proxyRes.headers['set-cookie'] = newCookie;
+          proxyRes.headers['set-cookie'] = newCookie; // cookies中如果带有Secure，则http下Chrome中set-cookies不会成功
+          proxyRes.headers['Access-Control-Allow-Origin'] = DEV_WEB_HOST;
+          proxyRes.headers['Access-Control-Allow-Credentials'] = 'true';
         }
       }
     }],
