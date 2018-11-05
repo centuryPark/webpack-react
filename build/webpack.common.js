@@ -1,7 +1,7 @@
 const path = require('path');
 const DISTPATH = path.resolve(__dirname, '../dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+//const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const env = process.env.NODE_ENV;
 
 // console.log(env);
@@ -29,37 +29,15 @@ const common = {
                 }
             },
             {
-                test: /\.scss$/,
-                // loader处理顺序从下往上
-                use: [
-                    {
-                        loader: "style-loader" // 将 JS 字符串生成为 style 节点
-                    },
-                    {
-                        loader: "css-loader" // 将 CSS 转化成 CommonJS 模块
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            sourceMap: true,
-                            config: {
-                                path: 'postcss.config.js'  // 项目根目录创建此文件
-                            }
-                        }
-                    },
-                    {
-                        loader: "sass-loader" // 将 Sass 编译成 CSS
-                    }
-                ]
-            },
-            {
                 test: /\.(png|svg|jpg|gif)$/,
                 // url-loader内置了file-loader,不同的是，当文件小于1024字节时，会转换为base64编码
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: '8192'
+                            limit: '8192',
+                            outputPath: 'img/',
+                            publicPath: '../img'
                         }
                     }
                 ]
