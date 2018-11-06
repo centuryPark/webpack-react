@@ -1,0 +1,19 @@
+.page-menu {
+  h1 {
+    font-size: 30px;
+    padding: 40px 0 40px 30px;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    li {
+      width: 30%;
+      text-align: center;
+      margin: 10px 0;
+    }
+  }
+}

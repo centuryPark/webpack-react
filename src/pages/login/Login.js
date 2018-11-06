@@ -4,16 +4,16 @@ import React, {Component} from 'react';
 class Login extends Component {
     state = {
         mobile: '',
-        smsCode: ''
+        password: ''
     };
     handelLogin = () => {
-        const {mobile, smsCode} = this.state;
+        const {mobile, password} = this.state;
         if (!mobile) {
             console.log('请输入手机号');
             return;
         }
-        if (!smsCode) {
-            console.log('请输入验证码');
+        if (!password) {
+            console.log('请输入密码');
             return;
         }
         // todo 验证用户名和密码, 获取登陆成功后返回页面

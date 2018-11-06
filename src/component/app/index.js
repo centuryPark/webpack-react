@@ -1,4 +1,4 @@
-import Menu from './Menu';
-import './Menu.scss';
+import App from './App';
+import './App.scss';
 
-export default Menu;
+export default App;
