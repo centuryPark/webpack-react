@@ -23,11 +23,11 @@ const NoMatch = ({location}) => (
 
 const BasicRouter = () => (
     <Switch>
-      <Route exact path="/menu" render={() => {
+      <Route path="/menu" render={() => {
         document.title = '菜单选择';
         return <Menu/>;
       }}/>
-      <Redirect from="/" to="/menu"/>
+      <Redirect exact from="/" to="/menu"/>
       <Route path="/colgate" component={ColgateComponent}/>
       <Route path="/login" component={LoginComponent}/>
       <Route path="/about" component={AboutComponent}/>

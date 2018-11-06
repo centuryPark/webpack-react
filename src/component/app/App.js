@@ -23,7 +23,7 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <Loading />
+        <Loading show={false} />
         <BaseRoute />
       </div>
     )
