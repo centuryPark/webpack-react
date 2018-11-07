@@ -44,8 +44,6 @@ class Login extends Component {
             // todo 保存token
             const {history} = this.props;
             history.push({pathname: '/'});
-        }).catch((e)=>{
-            console.log(e.response.status);
         });
     };
     handelInput = (key, e) => {

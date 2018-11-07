@@ -1,14 +1,21 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 class Loading extends Component {
   render() {
-    const { show } = this.props;
+    const { isShow } = this.props;
     return(
-      <div className="component-loading" style={{display: show? 'flex':'none'}}>
+      <div className="component-loading" style={{display: isShow? 'flex':'none'}}>
         loading...
       </div>
     )
   }
 }
 
-export default Loading
+function mapStateToProps(state) {
+  return{
+    isShow: state.loading
+  }
+}
+
+export default connect(mapStateToProps)(Loading)

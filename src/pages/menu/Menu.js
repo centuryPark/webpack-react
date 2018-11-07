@@ -1,11 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import axios from 'axios';
 
 class Menu extends Component {
-  state = {
-    moviesList: []
-  };
 
   /*handelClick = () => {
      import(/!* webpackChunkName: "print" *!/ './print').then(module => {
@@ -14,23 +10,7 @@ class Menu extends Component {
      });
  };*/
 
-  componentDidMount() {
-    axios.get('/api/my/movies', {
-      // withCredentials: true,
-      headers: {
-        'Authorization': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDIwOTc5MDAsInVzZXJuYW1lIjoiZ29uZ3l1YW4ifQ.MO5Wau3dgSJtjGErzxbNDJHzu40hhkgw8Qr060W0aCg'
-      }
-    }).then((res) => {
-      this.setState({
-        moviesList: res.data
-      })
-    }).catch((err) => {
-      console.log(err);
-    });
-  }
-
   render() {
-    const {moviesList} = this.state;
     return (
       <div>
         <div className="page-menu">
@@ -51,16 +31,13 @@ class Menu extends Component {
             <li>
               <Link to="/live">live</Link>
             </li>
+            <li>
+              <Link to="/count">计数</Link>
+            </li>
+            <li>
+              <Link to="/movies">电影列表</Link>
+            </li>
           </ul>
-        </div>
-        <div>
-          {
-            moviesList.map((item) => {
-              return (
-                <p key={item.id}>{item.name}</p>
-              )
-            })
-          }
         </div>
       </div>
     )
