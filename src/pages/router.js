@@ -9,10 +9,8 @@ import Menu from './menu/index';
 
 const Loading = () => "Loading...";
 const AboutComponent = Loadable({loader: () => import("./about/index"), loading: Loading, delay: 150});
-const ColgateComponent = Loadable({loader: () => import("./colgate/index"), loading: Loading, delay: 150});
 const LoginComponent = Loadable({loader: () => import("./login/index"), loading: Loading, delay: 150});
 const LiveListComponent = Loadable({loader: () => import("./liveList/index"), loading: Loading, delay: 150});
-const TodoListComponent = Loadable({loader: () => import("./todoList/index"), loading: Loading, delay: 150});
 const moviesListComponent = Loadable({loader: () => import("./moviesList/index"), loading: Loading, delay: 150});
 
 const NoMatch = ({location}) => (
@@ -30,11 +28,9 @@ const BasicRouter = () => (
         return <Menu/>;
       }}/>
       <Redirect exact from="/" to="/menu"/>
-      <Route path="/colgate" component={ColgateComponent}/>
       <Route path="/login" component={LoginComponent}/>
       <Route path="/about" component={AboutComponent}/>
       <Route path="/live" component={LiveListComponent}/>
-      <Route path="/count" component={TodoListComponent}/>
       <Route path="/movies" component={moviesListComponent}/>
       <Route path="*" component={NoMatch}/>
     </Switch>

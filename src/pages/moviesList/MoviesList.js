@@ -1,14 +1,10 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {getMoviesList} from '../../redux/actions/moviesList';
-import { showToast } from '../../redux/actions/toast';
 
 class MoviesList extends Component {
   componentDidMount() {
     this.props.getMoviesList();
-    setTimeout(()=>{
-      this.props.showToast('请求成功');
-    },1000)
   }
 
   render() {
@@ -20,14 +16,16 @@ class MoviesList extends Component {
             return (<div key={item.id}>{item.name}</div>)
           })
         }
+        <button onClick={()=>this.props.getMoviesList()}>再来一次</button>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
+  const { moviesList } = state;
   return {
-    list: state.moviesList
+    list: moviesList
   }
 }
 
@@ -40,4 +38,4 @@ function mapStateToProps(state) {
   }
 }*/
 
-export default connect(mapStateToProps, {getMoviesList,showToast})(MoviesList);
+export default connect(mapStateToProps, {getMoviesList})(MoviesList);

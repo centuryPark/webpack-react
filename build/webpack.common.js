@@ -4,8 +4,6 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 //const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const env = process.env.NODE_ENV;
 
-// console.log(env);
-
 const common = {
   entry: {
     app: './src/index.js',

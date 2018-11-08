@@ -13,9 +13,7 @@ class LiveList extends Component {
       this.setState({
         liveList: res.data.result
       })
-    }).catch((err) => {
-      console.log(err);
-    });
+    })
   }
 
   render() {

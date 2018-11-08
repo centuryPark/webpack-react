@@ -1,29 +1,41 @@
 import React, {Component} from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import BaseRoute from '../../pages/router';
 import Loading from '../loading';
 import Toast from '../toast';
+import {show, hide} from '../../redux/actions/loading';
+import HttpClient from '../../tools/httpClient';
 
 class App extends Component {
 
+  componentDidMount() {
+    HttpClient.setBefore(() => {
+      this.props.showLoading()
+    });
+
+    HttpClient.setAfter(() => {
+      this.props.hideLoading()
+    });
+  }
+
   render() {
-    const { showToast, toastMsg } = this.props;
+    const {showToast, toastMsg} = this.props;
     return (
       <div className="container">
-        <Loading />
-        <Toast visible={showToast} msg={toastMsg} />
-        <BaseRoute />
+        <Loading/>
+        <Toast visible={showToast} msg={toastMsg}/>
+        <BaseRoute/>
       </div>
     )
   }
 }
 
 function mapStateToProps(state) {
-  const {toast:{show,msg}} = state;
+  const {toast: {visible, msg}, loading} = state;
   return {
-    showToast: show,
+    showToast: visible,
     toastMsg: msg
   }
 }
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, {showLoading: show, hideLoading: hide})(App);

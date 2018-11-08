@@ -17,22 +17,13 @@ class Menu extends Component {
           <h1>菜单</h1>
           <ul>
             <li>
-              <Link to="/">home</Link>
-            </li>
-            <li>
               <Link to="/about">关于</Link>
-            </li>
-            <li>
-              <Link to="/colgate">colgate</Link>
             </li>
             <li>
               <Link to="/login">登陆</Link>
             </li>
             <li>
               <Link to="/live">live</Link>
-            </li>
-            <li>
-              <Link to="/count">计数</Link>
             </li>
             <li>
               <Link to="/movies">电影列表</Link>
