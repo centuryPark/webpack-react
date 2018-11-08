@@ -7,5 +7,5 @@ export {
   counter,
   loading,
   moviesList,
-  toast
-}
+  toast,
+};

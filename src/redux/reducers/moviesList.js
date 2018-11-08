@@ -1,4 +1,4 @@
-import { SET_MOVIES_LIST } from '../actions/moviesList'
+import { SET_MOVIES_LIST } from '../actions/moviesList';
 
 export default function setMoviesList(state = [], action) {
   switch (action.type) {

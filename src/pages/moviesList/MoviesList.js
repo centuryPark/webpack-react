@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
-import {connect} from 'react-redux';
-import {getMoviesList} from '../../redux/actions/moviesList';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getMoviesList } from '../../redux/actions/moviesList';
 
 class MoviesList extends Component {
   componentDidMount() {
@@ -8,34 +8,32 @@ class MoviesList extends Component {
   }
 
   render() {
-    const {list} = this.props;
+    const { list } = this.props;
     return (
       <div>
         {
-          list.map((item)=>{
-            return (<div key={item.id}>{item.name}</div>)
-          })
+          list.map(item => (<div key={item.id}>{item.name}</div>))
         }
-        <button onClick={()=>this.props.getMoviesList()}>再来一次</button>
+        <button onClick={() => this.props.getMoviesList()}>再来一次</button>
       </div>
-    )
+    );
   }
 }
 
 function mapStateToProps(state) {
   const { moviesList } = state;
   return {
-    list: moviesList
-  }
+    list: moviesList,
+  };
 }
 
-/*function mapDispatchToProps(dispatch) {
+/* function mapDispatchToProps(dispatch) {
   return {
     getMoviesList() {
       dispatch(getMoviesList())
     },
 
   }
-}*/
+} */
 
-export default connect(mapStateToProps, {getMoviesList})(MoviesList);
+export default connect(mapStateToProps, { getMoviesList })(MoviesList);

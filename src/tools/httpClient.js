@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Toast from '../component/toast'
+import Toast from '../component/toast';
 
 class HttpClient {
   static setBefore(hook) {
@@ -8,9 +8,7 @@ class HttpClient {
         hook();
       }
       return config;
-    }, ((error) => {
-      return Promise.reject(error);
-    }));
+    }, (error => Promise.reject(error)));
   }
 
   static setAfter(hook) {
@@ -44,10 +42,8 @@ class HttpClient {
           return Toast.show(`无反馈：${error.message}`);
         }
         // 响应时状态码处理
-        const status = error.response.status;
+        const { status } = error.responseclear;
         // const errortext = codeMessage[status] || error.response.statusText;
-        const errortext = error.response.statusText;
-
         if (error.response.data && error.response.data.msg) {
           Toast.show(error.response.data.msg);
           return Promise.reject();
@@ -69,4 +65,3 @@ class HttpClient {
 }
 
 export default HttpClient;
-

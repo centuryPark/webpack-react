@@ -1,5 +1,5 @@
 const print = () => {
-    encodeURIComponent('13aeqeq');
+  encodeURIComponent('13aeqeq');
 };
 
 export default print;

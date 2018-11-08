@@ -3,17 +3,17 @@ import axios from 'axios';
 
 class LiveList extends Component {
   state = {
-    liveList: []
+    liveList: [],
   };
 
   componentDidMount() {
     axios.get('api/live/now/streams?size=11&marker=', {
-      withCredentials: true
+      withCredentials: true,
     }).then((res) => {
       this.setState({
-        liveList: res.data.result
-      })
-    })
+        liveList: res.data.result,
+      });
+    });
   }
 
   render() {
@@ -25,21 +25,21 @@ class LiveList extends Component {
           {
             liveList.map((item) => {
               const { coverUrl, desc, id } = item;
-              return(
+              return (
                 <div className="live-item" key={id}>
                   <div className="banner">
-                    <img src={coverUrl}/>
+                    <img src={coverUrl} alt="banner" />
                   </div>
                   <div className="desc">
                     {desc}
                   </div>
                 </div>
-              )
+              );
             })
           }
         </div>
       </div>
-    )
+    );
   }
 }
 

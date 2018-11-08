@@ -1,5 +1,7 @@
-import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
-import { routerMiddleware, routerReducer } from 'react-router-redux';
+import {
+  createStore, applyMiddleware, compose, combineReducers,
+} from 'redux';
+import { routerReducer } from 'react-router-redux';
 import thunkMiddleware from 'redux-thunk';
 import * as reducers from './reducers';
 
@@ -10,9 +12,8 @@ if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
 }
 
 export default (history, initialState) => {
-
-  //const reduxRouterMiddleware = routerMiddleware(history);
-  //const middleware = [reduxRouterMiddleware, thunkMiddleware];
+  // const reduxRouterMiddleware = routerMiddleware(history);
+  // const middleware = [reduxRouterMiddleware, thunkMiddleware];
 
   // 添加异步action中间件
   const middleware = [thunkMiddleware];
@@ -25,7 +26,7 @@ export default (history, initialState) => {
   }
 
   const reducer = combineReducers({
-      ...reducers,
+    ...reducers,
     routing: routerReducer,
   });
 

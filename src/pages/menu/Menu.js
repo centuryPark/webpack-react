@@ -1,14 +1,13 @@
-import React, {Component} from 'react';
-import {Link} from 'react-router-dom';
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class Menu extends Component {
-
-  /*handelClick = () => {
+  /* handelClick = () => {
      import(/!* webpackChunkName: "print" *!/ './print').then(module => {
          let print = module.default;
          print();
      });
- };*/
+ }; */
 
   render() {
     return (
@@ -31,7 +30,7 @@ class Menu extends Component {
           </ul>
         </div>
       </div>
-    )
+    );
   }
 }
 

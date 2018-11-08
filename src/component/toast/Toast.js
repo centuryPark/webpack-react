@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 class Toast extends Component {
@@ -8,23 +8,27 @@ class Toast extends Component {
         window.appToast = document.createElement('div');
         document.body.appendChild(window.appToast);
       }
-      ReactDOM.render(<Toast visible={true} msg={msg} />, window.appToast);
+      ReactDOM.render(<Toast visible msg={msg} />, window.appToast);
     }
   }
+
   static hide() {
     ReactDOM.render(<Toast visible={false} />, window.appToast);
   }
+
   constructor(props) {
     super(props);
     this.state = {
       visible: props.visible || false,
     };
   }
+
   componentDidMount() {
     if (this.props.visible) {
       this.enter(this.props);
     }
   }
+
   componentWillReceiveProps(nextProps) {
     clearTimeout(this.timer);
 
@@ -34,11 +38,12 @@ class Toast extends Component {
       this.leave(nextProps);
     }
   }
+
   componentWillUnmount() {
     clearTimeout(this.timer);
   }
-  enter = (props) => {
 
+  enter = (props) => {
     this.setState({
       visible: true,
     });
@@ -48,6 +53,7 @@ class Toast extends Component {
       clearTimeout(this.timer);
     }, 2000);
   };
+
   leave = (props) => {
     this.setState({
       visible: false,
@@ -58,14 +64,15 @@ class Toast extends Component {
       onClose();
     }
   };
+
   render() {
-    const {visible} = this.state;
+    const { visible } = this.state;
     const { msg } = this.props;
     return (
-      <div className="component-toast" style={{display: visible ? 'flex' : 'none'}}>
+      <div className="component-toast" style={{ display: visible ? 'flex' : 'none' }}>
         <span>{msg}</span>
       </div>
-    )
+    );
   }
 }
 
