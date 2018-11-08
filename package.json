@@ -5,11 +5,9 @@
   "private": true,
   "main": "build/webpack.config.js",
   "scripts": {
-    "test": "export NODE_ENV=production&&echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist/&&webpack --config build/webpack.prod.js",
     "start": "webpack-dev-server --open --config build/webpack.dev.js",
-    "serve": "node server/server.js",
-    "lint": "eslint src"
+    "serve": "node server/server.js"
   },
   "keywords": [
     "webpack",
