@@ -8,9 +8,9 @@
     "build": "rm -rf dist/&&webpack --config build/webpack.prod.js",
     "start": "webpack-dev-server --open --config build/webpack.dev.js",
     "serve": "node server/server.js",
-    "lint-js": "eslint --ext .js src --fix",
-    "lint-style": "stylelint stylelint --syntax scss **/*.scss",
-    "lint": "npm run lint-js && npm run lint-style"
+    "lint:js": "eslint --ext .js src --fix",
+    "lint:style": "stylelint stylelint --syntax scss **/*.scss",
+    "lint": "npm run lint:js && npm run lint:style"
   },
   "keywords": [
     "webpack",
@@ -25,8 +25,7 @@
     "ie >= 9"
   ],
   "pre-commit": [
-    "lint-js",
-    "lint-css"
+    "lint"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
