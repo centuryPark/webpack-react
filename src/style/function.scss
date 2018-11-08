@@ -1,0 +1,17 @@
+@function r($px) {
+  @if $px != 0 {
+    @return ($px/2) / 16 * 1rem;
+  }
+  @else {
+    @return 0;
+  }
+}
+
+@function wi($px) {
+  @if $px != 0 {
+    @return $px / 750 * 100vw;
+  }
+  @else {
+    @return 0;
+  }
+}

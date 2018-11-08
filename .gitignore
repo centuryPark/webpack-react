@@ -3,7 +3,6 @@
 # compiled output
 /dist
 /tmp
-angular-cli.tmp.json
 
 # dependencies
 /node_modules
@@ -34,9 +33,5 @@ testem.log
 .DS_Store
 Thumbs.db
 
-# config
-/src/environments/environment.dev.ts
-/src/environments/environment.test-prod.ts
-/angular-cli.dev.json
-/angular-cli.prod.json
-hack/Dockerfile
+package-lock.json
+

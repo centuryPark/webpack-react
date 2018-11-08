@@ -8,7 +8,9 @@
     "build": "rm -rf dist/&&webpack --config build/webpack.prod.js",
     "start": "webpack-dev-server --open --config build/webpack.dev.js",
     "serve": "node server/server.js",
-    "lint-js": "eslint --ext .js src --fix"
+    "lint-js": "eslint --ext .js src --fix",
+    "lint-style": "stylelint stylelint --syntax scss **/*.scss",
+    "lint": "npm run lint-js && npm run lint-style"
   },
   "keywords": [
     "webpack",
@@ -23,7 +25,8 @@
     "ie >= 9"
   ],
   "pre-commit": [
-    "lint-js"
+    "lint-js",
+    "lint-css"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
@@ -48,6 +51,8 @@
     "pre-commit": "^1.2.2",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.0",
+    "stylelint": "^9.7.1",
+    "stylelint-config-standard": "^18.2.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.20.2",
     "webpack-cli": "^3.1.0",

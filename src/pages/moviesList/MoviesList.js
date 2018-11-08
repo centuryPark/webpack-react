@@ -10,7 +10,7 @@ class MoviesList extends Component {
   render() {
     const { list } = this.props;
     return (
-      <div>
+      <div className="page-movie-list">
         {
           list.map(item => (<div key={item.id}>{item.name}</div>))
         }

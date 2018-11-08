@@ -2,4 +2,5 @@ sudo: false
 language: node_js
 node_js:
 - 9
-script: npm run build
+script:
+- npm run lint
