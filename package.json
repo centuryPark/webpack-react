@@ -23,7 +23,7 @@
     "ie >= 9"
   ],
   "pre-commit": [
-    "lint"
+    "lint-js"
   ],
   "devDependencies": {
     "@babel/core": "^7.0.0-0",
