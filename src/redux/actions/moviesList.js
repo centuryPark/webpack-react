@@ -14,9 +14,6 @@ export function getMoviesList() {
         method: 'get',
         url: '/api/my/movies',
         withCredentials: true,
-        headers: {
-          Authorization: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE1NDIwOTc5MDAsInVzZXJuYW1lIjoiZ29uZ3l1YW4ifQ.MO5Wau3dgSJtjGErzxbNDJHzu40hhkgw8Qr060W0aCg',
-        },
       }
     ).then((data) => {
       dispatch(setMovies(data));

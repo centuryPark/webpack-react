@@ -26,7 +26,19 @@ class HttpClient {
   }
 
   static request(opt) {
-    return axios(opt)
+    let defaultOption = {};
+    const token = localStorage.getItem('token');
+    if (token) {
+      defaultOption = {
+        headers: {
+          Authorization: token,
+        },
+      };
+    } else {
+      defaultOption = {};
+    }
+    const option = { ...opt, ...defaultOption };
+    return axios(option)
       .then((response) => {
         // >>>>>>>>>>>>>> 请求成功 <<<<<<<<<<<<<<
         // 业务逻辑错误
