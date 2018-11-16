@@ -7,7 +7,12 @@ import * as reducers from './reducers';
 
 export default (history, initialState) => {
   // redux 调试插件配置
-  const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+  let composeEnhancer;
+  if (process.env.NODE_ENV !== 'production' && window.devToolsExtension) {
+    composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+  } else {
+    composeEnhancer = compose;
+  }
   return createStore(
     combineReducers(
       {

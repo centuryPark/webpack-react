@@ -1,7 +1,8 @@
 const path = require('path');
+
 const DISTPATH = path.resolve(__dirname, '../dist');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const CleanWebpackPlugin = require('clean-webpack-plugin');
+// const CleanWebpackPlugin = require('clean-webpack-plugin');
 // const env = process.env.NODE_ENV;
 
 const common = {
@@ -15,8 +16,8 @@ const common = {
     pathinfo: true,
     filename: 'js/[name].[chunkhash].js',
     path: DISTPATH,
-    publicPath: "/" // publicPath 总是以斜杠(/)开头和结尾。
-    //chunkFilename: '[name].js'
+    publicPath: '/', // publicPath 总是以斜杠(/)开头和结尾。
+    // chunkFilename: '[name].js'
   },
   module: {
     rules: [
@@ -24,8 +25,8 @@ const common = {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
         use: {
-          loader: 'babel-loader'
-        }
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.(png|svg|jpg|gif)$/,
@@ -36,12 +37,12 @@ const common = {
             options: {
               limit: '8192',
               outputPath: 'img/',
-              publicPath: '../img'
-            }
-          }
-        ]
-      }
-    ]
+              publicPath: '../img',
+            },
+          },
+        ],
+      },
+    ],
   },
   plugins: [
     // 清除dist中的文件
@@ -49,7 +50,7 @@ const common = {
     // 生成包含js等各种依赖的html文件
     // TODO 其他特别配置
     new HtmlWebpackPlugin({
-      template: './src/index.html'
+      template: './src/index.html',
     }),
     // 这能把loadsh作为全局变量，使用时无需引入，$ jquery同理
     /* new webpack.ProvidePlugin({
@@ -66,11 +67,11 @@ const common = {
         vendor: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'all'
-        }
-      }
-    }
-  }
-}
+          chunks: 'all',
+        },
+      },
+    },
+  },
+};
 
 module.exports = common;
