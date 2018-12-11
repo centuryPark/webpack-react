@@ -73,7 +73,7 @@ module.exports = merge(common, {
       /* assetNameRegExp: /\.css$/g,
       cssProcessorOptions: {
         safe: true,
-        autoprefixer: { disable: true }, // 繁殖cssnano把浏览器前缀去掉
+        autoprefixer: { disable: true }, // 防止cssnano把浏览器前缀去掉
         mergeLonghand: false,
         discardComments: {
           removeAll: true // 移除注释
