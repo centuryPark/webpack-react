@@ -18,14 +18,14 @@ export default (history, initialState) => {
       {
         ...reducers,
         router: connectRouter(history),
-      }
+      },
     ),
     initialState,
     composeEnhancer(
       applyMiddleware(
         routerMiddleware(history),
-        thunkMiddleware
-      )
-    )
+        thunkMiddleware,
+      ),
+    ),
   );
 };

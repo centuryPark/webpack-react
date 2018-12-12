@@ -14,7 +14,7 @@ export function getMoviesList() {
         method: 'get',
         url: '/api/my/movies',
         withCredentials: true,
-      }
+      },
     ).then((data) => {
       dispatch(setMovies(data));
     });

@@ -14,7 +14,7 @@ class MoviesList extends Component {
         {
           list.map(item => (<div key={item.id}>{item.name}</div>))
         }
-        <button onClick={() => this.props.getMoviesList()}>再来一次</button>
+        <button type="button" onClick={() => this.props.getMoviesList()}>再来一次</button>
       </div>
     );
   }

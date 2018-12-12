@@ -24,7 +24,8 @@ class Toast extends Component {
   }
 
   componentDidMount() {
-    if (this.props.visible) {
+    const { visible } = this.props;
+    if (visible) {
       this.enter(this.props);
     }
   }

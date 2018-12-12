@@ -8,12 +8,13 @@ import HttpClient from '../../tools/httpClient';
 
 class App extends Component {
   componentDidMount() {
+    const { showLoading, hideLoading } = this.props;
     HttpClient.setBefore(() => {
-      this.props.showLoading();
+      showLoading();
     });
 
     HttpClient.setAfter(() => {
-      this.props.hideLoading();
+      hideLoading();
     });
   }
 

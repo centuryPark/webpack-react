@@ -72,7 +72,8 @@ class Login extends Component {
           <div className="btn submit" onClick={this.handelLogin}><span>立即登录</span></div>
         </div>
         <footer className="footer">
-          Copyright@© 2018 开发者 gong yuan 所有<br />
+          Copyright@© 2018 开发者 gong yuan 所有
+          <br />
           Email：gongyuan931024@163.com
         </footer>
       </div>
