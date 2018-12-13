@@ -6,11 +6,11 @@ import morning from './images/morning.png';
 import evening from './images/afternoon.png';
 
 const LOAD_STATE = {
-  normal: 0,   // 普通
-  abort: 1,    // 中止
-  loading: 2,  // 加载中
-  success: 3,  // 加载成功
-  failure: 4,  // 加载失败
+  normal: 0, // 普通
+  abort: 1, // 中止
+  loading: 2, // 加载中
+  success: 3, // 加载成功
+  failure: 4, // 加载失败
   complete: 5, // 加载完成（无新数据）
 };
 
@@ -40,6 +40,7 @@ class Insurance extends Component {
       showTips: false,
     };
   }
+
   componentDidMount() {
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
@@ -220,9 +221,29 @@ class Insurance extends Component {
     }
     this.appendData(5);
   }
+
   componentWillUnmount() {
     this.mounted = false;
   }
+
+  toggle = (key) => {
+    const value = this.state[key];
+    this.setState({
+      [key]: !value,
+    });
+  };
+
+  appendData(length, dataSource) {
+    dataSource = dataSource || this.state.dataSource;
+    const startIndex = dataSource.length;
+    for (let i = startIndex; i < startIndex + length; i++) {
+      dataSource.push(<TextCell key={i} />);
+    }
+    this.setState({
+      dataSource,
+    });
+  }
+
   // 模拟加载更多数据
   loadData() {
     this.setState({ loading: LOAD_STATE.loading });
@@ -246,28 +267,7 @@ class Insurance extends Component {
       });
     }, 2000);
   }
-  appendData(length, dataSource) {
-    dataSource = dataSource || this.state.dataSource;
-    const startIndex = dataSource.length;
-    for (let i = startIndex; i < startIndex + length; i++) {
-      dataSource.push(<TextCell key={i} />);
-    }
-    this.setState({
-      dataSource,
-    });
-  }
-  toggle = (key) => {
-    const value = this.state[key];
-    this.setState({
-      [key]: !value,
-    });
-  };
-  goToBrash = () => {
-    // console.log('language', window.navigator.language);
-  };
-  ToBrashIos = () => {
-    // console.log('language', window.navigator.language);
-  };
+
   render() {
     const { showTips } = this.state;
     return (
@@ -319,7 +319,10 @@ class Insurance extends Component {
               <span className="text">2500保障</span>
             </div>
           </div>
-          <p><span>查看保障详情</span><i className="arrow-right" /></p>
+          <p>
+            <span>查看保障详情</span>
+            <i className="arrow-right" />
+          </p>
         </div>
         <div className="middle">
           <h3 className="title">
@@ -334,7 +337,7 @@ class Insurance extends Component {
               </div>
             </div>
             <div className="right">
-              <button disabled={false} className="btn" onClick={this.ToBrashIos}><span>已完成</span></button>
+              <button disabled={false} className="btn"><span>已完成</span></button>
             </div>
           </div>
           <div className="row">
@@ -346,7 +349,7 @@ class Insurance extends Component {
               </div>
             </div>
             <div className="right">
-              <button className="btn" onClick={this.goToBrash}><span>去刷牙</span></button>
+              <button className="btn"><span>去刷牙</span></button>
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ const proxyConfig = {
     changeOrigin: true,
     noInfo: true,
     // 修改响应信息中的cookie域名
-    cookieDomainRewrite: HOST,  // 可以为false，表示不修改
+    cookieDomainRewrite: HOST, // 可以为false，表示不修改
     // pathRewrite: {'^/api' : ''}
     // 修改响应头信息，实现跨域并允许带cookie
     onProxyRes(proxyRes) {

@@ -26,7 +26,7 @@ module.exports = merge(common, {
             options: {
               sourceMap: true,
               config: {
-                path: 'postcss.config.js',  // 项目根目录创建此文件
+                path: 'postcss.config.js', // 项目根目录创建此文件
               },
             },
           },
@@ -50,11 +50,9 @@ module.exports = merge(common, {
     historyApiFallback: {
       disableDotRule: true,
     },
-    proxy: proxyKeys.map((item) => {
-      return {
-        context: item,
-        ...proxyConfig[item],
-      };
-    }),
+    proxy: proxyKeys.map(item => ({
+      context: item,
+      ...proxyConfig[item],
+    })),
   },
 });
