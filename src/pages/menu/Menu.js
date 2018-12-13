@@ -27,6 +27,9 @@ class Menu extends Component {
             <li>
               <Link to="/movies">电影列表</Link>
             </li>
+            <li>
+              <Link to="/dot">积分</Link>
+            </li>
           </ul>
         </div>
       </div>
